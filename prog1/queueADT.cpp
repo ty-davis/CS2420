@@ -20,6 +20,8 @@ bool queueADT<Type>::isFull() {
 template <class Type>
 Type queueADT<Type>::deQueue() {
 	if (isEmpty()) {
+		printf("error: Queue is empty. Cannot dequeue.\n");
+		return 0;
 		throw std::runtime_error("Queue is empty. Cannot dequeue.");
 	}
 	Type value = lq[head];
@@ -30,10 +32,21 @@ Type queueADT<Type>::deQueue() {
 
 template <class Type>
 void queueADT<Type>::enQueue(Type item) {
-
+	if (isFull()) {
+		printf("error: Queue is full. Cannot enqueue.\n");
+		return;
+		// throw std::runtime_error("Queue is full. Cannot enqueue.\n");
+	}
+	lq[tail] = item;
+	tail = (tail + 1) % maxsize;
+	count ++;
 }
 
 template <class Type>
 Type queueADT<Type>::peek() {
-	
+	if (isEmpty()) {
+		printf("error: Cannot peek the empty queue.\n");
+		return 0;
+	}
+	return lq[head];
 }
