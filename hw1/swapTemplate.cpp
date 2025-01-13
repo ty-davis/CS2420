@@ -7,8 +7,6 @@
 *
 */
 
-#include "swapTemplate.h"
-
 // swapping 1 and 2
 template <class Type>
 void swapClass<Type>::swap12() {
