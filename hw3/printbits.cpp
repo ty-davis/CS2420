@@ -5,8 +5,8 @@ using namespace std;
 
 void printlebits(void* ptr, int bytes) {
     char* onebyte = (char*)ptr; // Declare a pointer to a byte and initialize
-                            // to the address of the parameter
-    int i;                    // loop control variable 
+                                // to the address of the parameter
+    int i;                      // loop control variable 
 
     if (bytes > 0) {
         printlebits((void*) (onebyte + 1), bytes - 1); // print higher order bytes first
