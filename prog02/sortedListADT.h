@@ -29,7 +29,7 @@ public:
 	// overload the assignment operator for a sorted list
 	
 	bool isEmpty() const;
-	// isEmptyQ determines whether the list is empty or not
+	// isEmpty determines whether the list is empty or not
 	
 	bool search(const Type& searchElem) const;
 	// return true if searchItem is in the list
