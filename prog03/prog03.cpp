@@ -7,8 +7,6 @@
 
 using namespace std;	// needed because I'm lazy and don't feel like adding std:: to everything
 
-#define FIXED_IO(x) fixed << setw(5) << setprecision(2) << x
-#define NUMTAB 6
 #define TABSIZE 211
 
 int main() {
