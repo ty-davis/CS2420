@@ -80,7 +80,7 @@ int main(){
 	// must be collisions and we would use "open hashing" with a linked list
 	// for each table row
 	cout << "\n----------    Test Results    -----------\n";
-	cout << "Hash function used:  Robert Sedgwick\n";
+	cout << "Hash function used:  BKDR Hash\n";
 	cout << "Total number of strings in the input file: " << numberRead << endl;
 	// output the results for each table size used
 	for (i=0; i < NUMTAB; i++) {
