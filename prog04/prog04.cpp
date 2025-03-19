@@ -1,7 +1,18 @@
-#include <ctime>
+/* 
+ * prog04.cpp
+ * Ty Davis 3/18/2025
+ * 
+ * Program that prompts the user for a file containing
+ * any number of random integers. Displays some of those integers
+ * and then sorts them while measuring the amount of time
+ * taken. Implements both bubble sort and quick sort.
+ * 
+ */
+
+#include <ctime>    // timing stuff
 #include <iostream> // i/o streams
 #include <fstream>  // file i/o
-#include <vector>
+#include <vector>   // resizeable arrays
 
 using namespace std;   // don't want to type std:: a billion times
 
@@ -49,7 +60,6 @@ void bubbleSort(vector<int>& vec) {
 	}
 }
 
-/* split */
 int partition(vector<int>& vec, int p, int r) {
 	int x = vec.at(r);
 	int i = p - 1;
@@ -105,32 +115,39 @@ int main() {
 
 	tempNumbers = numbers; // copy to avoid ruining the original data
 	cout << " --- Numbers before sorting --- \n";
-	printFirstLast(15, numbers);
+	printFirstLast(7, numbers);
 
-	/* begin profiling the functions */
+	/* begin profiling the algorithms */
 	clock_t c_start;
 	clock_t c_end;
+	time_t start_time;
+	tm *ltm;
 	long double time_elapsed_sec;
-	cout << " --- Initiate sorting with bubble sort. Starting timer... --- \n";
+
+	start_time =  time(0);
+	ltm = localtime(&start_time);
+	cout << " --- Initiate sorting with bubble sort. Starting timer at " << ltm->tm_hour << ":" << ltm->tm_min << "... --- \n";
 
 	c_start = clock(); // start clock
 	bubbleSort(tempNumbers);
 	c_end = clock(); // end clock
 
 	time_elapsed_sec = (long double)(c_end - c_start) / CLOCKS_PER_SEC;
-	printFirstLast(10, tempNumbers);
+	printFirstLast(7, tempNumbers);
 	cout << " --- Done sorting! Sorting took " << time_elapsed_sec << " seconds --- \n";
 
 	tempNumbers = numbers;
 
-	cout << " --- Initiate sorting with quick sort. Starting timer... --- \n";
+	start_time = time(0);
+	ltm = localtime(&start_time);
+	cout << " --- Initiate sorting with quick sort. Starting timer at " << ltm->tm_hour << ":" << ltm->tm_min << "... --- \n";
 
 	c_start = clock();
 	quickSort(tempNumbers, 0, tempNumbers.size() - 1);
 	c_end = clock();
 	time_elapsed_sec = (long double)(c_end - c_start) / CLOCKS_PER_SEC;
 	
-	printFirstLast(10, tempNumbers);
+	printFirstLast(7, tempNumbers);
 	cout << " --- Done sorting! Sorting took " << time_elapsed_sec << " seconds --- \n";
 
 	return 0;
